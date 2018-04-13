@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { Item } from '../../models/item/item.models';
+
 /**
  * Generated class for the SocialPage page.
  *
@@ -14,12 +16,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'social.html',
 })
 export class SocialPage {
+  item: Item;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SocialPage');
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
+    console.log(`Social ${this.item.cidade}`);
   }
-
 }

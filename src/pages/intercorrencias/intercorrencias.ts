@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the IntercorrenciasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Item } from '../../models/item/item.models';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'intercorrencias.html',
 })
 export class IntercorrenciasPage {
+  item: Item;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntercorrenciasPage');
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
+    console.log(this.item.A41);
   }
-
 }

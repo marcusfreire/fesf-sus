@@ -1,11 +1,11 @@
-<ion-tabs>
+<ion-tabs >
   <ion-fab right middle>
-      <button ion-fab color="secondary" (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
+      <button ion-fab color="secondary" (click)="addItem(item)"><ion-icon name="add-circle"></ion-icon></button>
   </ion-fab>
-  <ion-tab [root]="tab1Root" tabTitle="Social" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Pré-Parto" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Parto" tabIcon="contacts"></ion-tab>
-  <ion-tab [root]="tab4Root" tabTitle="Intercorrencias" tabIcon="bookmark"></ion-tab>
-  <ion-tab [root]="tab5Root" tabTitle="Boas Práticas" tabIcon="body"></ion-tab>
-  <ion-tab [root]="tab6Root" tabTitle="Puerpério" tabIcon="clipboard"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Social" tabIcon="home" [rootParams]="{item: item}"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Pré-Parto" tabIcon="information-circle" [rootParams]="{item: item}"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Parto" tabIcon="contacts" [rootParams]="{item: item}"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="Intercorrencias" tabIcon="bookmark" [rootParams]="{item: item}"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Boas Práticas" tabIcon="body" [rootParams]="{item: item}"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="Puerpério" tabIcon="clipboard" [rootParams]="{item: item}"></ion-tab>
 </ion-tabs>

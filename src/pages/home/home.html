@@ -7,12 +7,12 @@
 <ion-content padding>
   <ion-item>
       <ion-label>Data:</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="item.data"></ion-datetime>
   </ion-item>
 
   <ion-item>
       <ion-label>Cidade:</ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="item.cidade">
         <ion-option value="Salvador">Salvador</ion-option>
         <ion-option value="Cipó">Cipó</ion-option>
         <ion-option value="Jorro">Jorro</ion-option>
@@ -20,7 +20,7 @@
   </ion-item>
 
   <ion-item>
-    <button ion-button round color="secondary" 
-    navPush="TabsPage">Adicionar Coleta</button>
+    <button ion-button large round color="secondary" 
+    navPush="TabsPage" [navParams]="{item: item}">Adicionar Coleta</button>
   </ion-item>
 </ion-content>
