@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ColetaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>coleta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+      <ion-label>{{item.cidade}} </ion-label>
+  </ion-item>
+  <ion-item>
+      <ion-label>{{item.data}} </ion-label>
+  </ion-item>
+  <ion-item>
+    <button ion-button round icon-start navPush="SocialPage" [navParams]="{item: item}"> Social <ion-icon name="home"></ion-icon></button>
+    <button ion-button round icon-end navPush="PrePartoPage" [navParams]="{item: item}"> Pré Parto <ion-icon name="information-circle"></ion-icon></button>
+  </ion-item>
+  <ion-item>
+    <button ion-button round icon-start navPush="PartoPage" [navParams]="{item: item}"> Parto <ion-icon name="contacts"></ion-icon></button>
+    <button ion-button round icon-end navPush="IntercorrenciasPage" [navParams]="{item: item}"> Intercorrências <ion-icon name="information-circle"></ion-icon></button>
+  </ion-item> 
+<ion-item>
+    <button ion-button round icon-start navPush="BoasPraticasPage" [navParams]="{item: item}"> Boas Práticas <ion-icon name="body"></ion-icon></button>
+    <button ion-button round icon-end navPush="PuerperioPage" [navParams]="{item: item}"> Puerpério <ion-icon name="information-circle"></ion-icon></button>
+</ion-item> 
+<ion-item>
+  <button ion-button round (click)="addItem(item)"> Salvar Coleta  <ion-icon name="done-all"></ion-icon></button>
+</ion-item>   
+
+</ion-content>

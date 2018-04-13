@@ -1,9 +1,3 @@
-<!--
-  Generated template for the PartoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,12 +8,28 @@
 
 
 <ion-content padding>
-  <ion-fab top right edge>
-      <button ion-fab color="secondary"><ion-icon name="arrow-down"></ion-icon></button>
-      <ion-fab-list side="left">
-          <button ion-fab><ion-icon name="add"></ion-icon></button>
-          <button ion-fab navPush="HomePage"><ion-icon name="arrow-back"></ion-icon></button>
-        </ion-fab-list>
-  </ion-fab>
-
+    <ion-item>
+        <ion-label>A31: </ion-label>
+        <ion-input [(ngModel)]="item.A31" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>A32: </ion-label>
+        <ion-input [(ngModel)]="item.A32" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>A33: </ion-label>
+        <ion-input [(ngModel)]="item.A33" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>A34: </ion-label>
+        <ion-input [(ngModel)]="item.A34" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>A35: </ion-label>
+        <ion-input [(ngModel)]="item.A35" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>A36: </ion-label>
+        <ion-input [(ngModel)]="item.A36" type="number"></ion-input>
+    </ion-item>
 </ion-content>

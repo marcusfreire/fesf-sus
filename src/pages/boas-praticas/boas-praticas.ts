@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the BoasPraticasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Item } from '../../models/item/item.models';
 
 @IonicPage()
 @Component({
@@ -14,12 +9,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'boas-praticas.html',
 })
 export class BoasPraticasPage {
+  item: Item;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
+    console.log(this.item.A51);
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BoasPraticasPage');
-  }
-
 }

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the PuerperioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Item } from '../../models/item/item.models';
 
 @IonicPage()
 @Component({
@@ -14,12 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'puerperio.html',
 })
 export class PuerperioPage {
+  item: Item;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PuerperioPage');
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
+    console.log(this.item.A61);
   }
-
 }

@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PartoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Item } from '../../models/item/item.models';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'parto.html',
 })
 export class PartoPage {
+  item: Item;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PartoPage');
+  ionViewWillLoad() {
+    this.item = this.navParams.get('item');
+    console.log(this.item.A31);
   }
-
 }
