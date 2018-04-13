@@ -1,4 +1,7 @@
 <ion-tabs>
+  <ion-fab right middle>
+      <button ion-fab color="secondary" (click)="addItem()"><ion-icon name="add-circle"></ion-icon></button>
+  </ion-fab>
   <ion-tab [root]="tab1Root" tabTitle="Social" tabIcon="home"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Pré-Parto" tabIcon="information-circle"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Parto" tabIcon="contacts"></ion-tab>

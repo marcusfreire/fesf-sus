@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,7 +14,11 @@ export class TabsPage {
   tab5Root:string = "BoasPraticasPage";
   tab6Root:string = "PuerperioPage";
 
-  constructor() {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
 
+  }
+
+  addItem(){
+      this.navCtrl.setRoot('HomePage');
   }
 }
