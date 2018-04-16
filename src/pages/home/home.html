@@ -6,21 +6,39 @@
 
 <ion-content padding>
   <ion-item>
-      <ion-label>Data:</ion-label>
-      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="item.data"></ion-datetime>
-  </ion-item>
-
-  <ion-item>
       <ion-label>Cidade:</ion-label>
-      <ion-select [(ngModel)]="item.cidade">
+      <ion-select [(ngModel)]="item.cidade" (click)="botao()">
         <ion-option value="Salvador">Salvador</ion-option>
         <ion-option value="Cipó">Cipó</ion-option>
         <ion-option value="Jorro">Jorro</ion-option>
       </ion-select>
   </ion-item>
+  
+  <ion-item>
+      <ion-label>Data:</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="item.data" (click)="botao()"></ion-datetime>
+  </ion-item>
+
+  
 
   <ion-item>
-    <button ion-button large round color="secondary" 
-    navPush="TabsPage" [navParams]="{item: item}">Adicionar Coleta</button>
+    <button [color]="cor? 'secondary' : 'light'" ion-button large round  
+      [navPush]="cor? 'TabsPage':''" [navParams]="{item: item}" 
+      (click)="verificaCidade(item.cidade,item.data)">Adicionar Coleta
+    </button>
+    
   </ion-item>
+  <ion-list>  
+    <ion-item-sliding *ngFor="let amostra of coletaLista$ | async" #slidingItem>
+        <ion-item *ngIf="amostra.cidade === item.cidade">
+            <p>Cidade:{{amostra.cidade}}</p>
+            <p>Data:{{amostra.data}}</p>
+            <ion-item *ngIf="amostra.data === item.data" ></ion-item>
+         </ion-item>
+          <ion-item-options>
+            <button ><ion-icon name="create"></ion-icon>Criar</button>
+            <button ><ion-icon name="trash"></ion-icon>Apagar</button>
+          </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

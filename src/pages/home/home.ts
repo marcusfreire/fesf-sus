@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, NavParams } from 'ionic-angular';
 
 import { Item } from '../../models/item/item.models';
+import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -49,5 +51,42 @@ export class HomePage {
     A65:0,
     };
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) { }
+    coletaLista$: Observable<Item[]>;
+    
+    cor:boolean = false;
+
+    constructor(public navCtrl: NavController, public navParams: NavParams, 
+      public coleta: ColetaListService) {
+        this.coletaLista$ = coleta
+          .getColetaList()
+          .snapshotChanges()
+          .map(changes => {
+            return changes.map(c => ({
+              key: c.payload.key,
+              ...c.payload.val(),
+            }));
+          });
+       }
+ 
+    botao(){
+      if((this.item.data!='') && (this.item.cidade!='')){
+        console.log(`${this.cor} data: ${this.item.data} cidade: ${this.item.cidade}`);
+        this.cor=true;
+      }
+    } 
+       
+    verificaCidade(cidade:string, data:string){ 
+      this.coletaLista$.forEach(function(i){
+      //for(let i of this.coletaLista$){
+        console.log(`Teste i obj  ${i}`);
+        i.forEach(function(x){
+          //console.log(`Teste x obj ${x.cidade}, data ${x.data} `);
+          if((x.cidade == cidade) && (x.data== data)){
+            console.log(`Cidade: ${cidade}, na data: ${data}, JÁ Cadastrado!`);
+          }else{
+            console.log(`Cidade: ${cidade}, na data: ${data}, Não Está cadastrado!`);
+          }
+        }); 
+      });        
+    }
 }

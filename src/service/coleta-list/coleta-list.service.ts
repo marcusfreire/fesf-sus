@@ -6,7 +6,6 @@ import { Item } from "../../models/item/item.models";
 @Injectable()
 export class ColetaListService {
     private coletaListRef = this.db.list<Item>('coletas');
-    
     constructor(private db: AngularFireDatabase){ }
 
     getColetaList(){
