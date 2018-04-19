@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, ToastController } from 'ionic-angular';
 
 import { Item } from '../../models/item/item.models';
 import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -55,8 +56,8 @@ export class HomePage {
     
     cor:boolean = false;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, 
-      public coleta: ColetaListService) {
+    constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, 
+      public navParams: NavParams, public coleta: ColetaListService, private toast: ToastController) {
         this.coletaLista$ = coleta
           .getColetaList()
           .snapshotChanges()
@@ -88,5 +89,22 @@ export class HomePage {
           }
         }); 
       });        
+    }
+
+    ionViewWillLoad(){
+      this.afAuth.authState.subscribe(data =>{
+        if (data && data.email && data.uid){
+          this.toast.create({
+            message: `Bem vindo ${data.email}`,
+            duration:3000
+          }).present();          
+        }else{
+          this.toast.create({
+            message: `Não encontou este usuário`,
+            duration:3000
+          }).present();           
+        }
+      })
+
     }
 }
