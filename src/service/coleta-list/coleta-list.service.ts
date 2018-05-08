@@ -12,6 +12,15 @@ export class ColetaListService {
         return this.coletaListRef;
     }
 
+    busca(chave:string){
+        return this.db.list<Item>('coletas', ref => ref.orderByChild('cidade').equalTo(chave))
+            .snapshotChanges()
+            .map (Changes => {
+                return Changes.map(p => ({
+                chave: p.payload.key, ...p.payload.val()}));
+    })
+    }
+
     addItem(item: Item){
         return this.coletaListRef.push(item);
     }

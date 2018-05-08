@@ -91,6 +91,12 @@ export class HomePage {
       });        
     }
 
+    sair(){
+      this.afAuth.auth.signOut().then(() => {
+        this.navCtrl.setRoot('LoginPage');
+    });
+    }
+
     ionViewWillLoad(){
       this.afAuth.authState.subscribe(data =>{
         if (data && data.email && data.uid){

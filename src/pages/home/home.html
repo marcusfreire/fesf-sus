@@ -22,12 +22,20 @@
   
 
   <ion-item>
-    <button [color]="cor? 'secondary' : 'light'" ion-button large round  
+    <button [color]="cor? 'secondary' : 'light'" ion-button full large round  
       [navPush]="cor? 'TabsPage':''" [navParams]="{item: item}" 
       (click)="verificaCidade(item.cidade,item.data)">Adicionar Coleta
     </button>
     
   </ion-item>
+
+  <ion-item>
+    <button [color]="light" ion-button icon-only (click)="sair()">
+      <ion-icon name="exit"> Sair </ion-icon>
+    </button>
+    
+  </ion-item>
+
   <ion-list>  
     <ion-item-sliding *ngFor="let amostra of coletaLista$ | async" #slidingItem>
         <ion-item *ngIf="amostra.cidade === item.cidade">

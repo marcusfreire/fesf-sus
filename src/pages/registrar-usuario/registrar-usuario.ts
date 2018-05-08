@@ -43,6 +43,10 @@ export class RegistrarUsuarioPage {
       this.err_texto = "E-mail ou Senha não digitada";
       console.log("E-mail ou Senha não digitada");
     }
+    else if(e.code === 'auth/email-already-in-use'){
+      this.err_texto = "E-mail já está cadastrado";
+      console.log("E-mail já está cadastrado");
+    }
     else {
         this.err_texto = "Erro, por favor repita a operação";
         console.log("Erro");
