@@ -94,7 +94,7 @@ export class HomePage {
     sair(){
       this.afAuth.auth.signOut().then(() => {
         this.navCtrl.setRoot('LoginPage');
-    });
+      });
     }
 
     ionViewWillLoad(){

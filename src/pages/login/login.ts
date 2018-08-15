@@ -43,16 +43,16 @@ export class LoginPage {
     }else if(error.code === 'auth/invalid-email'){
       this.err_texto = "E-mail inválido";
       console.log("E-mail inválido");
-   }else if(error.code === 'auth/argument-error'){
+    }else if(error.code === 'auth/argument-error'){
     this.err_texto = "E-mail ou Senha não digitada";
     console.log("Senha não digitada");
- }
+    }
       console.error(error);
     }
   }
 
-  registrar(){
-    this.navCtrl.push('RegistrarUsuarioPage');
+  resetarSenha(){
+    this.navCtrl.push('ResetSenhaPage');
   }
 
 }
