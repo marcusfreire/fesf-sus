@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Cidade } from '../../models/cidade';
 import { Observable } from 'rxjs/Observable';
 import { CidadeListService } from '../../service/cidade-list/cidade-list.service';
+import { ToastService } from '../../service/toast/toast.service';
 
 /**
  * Generated class for the AdmCidadePage page.
@@ -25,8 +26,8 @@ export class AdmCidadePage {
   
   cidadeLista$: Observable<Cidade[]>;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,public listacidade: CidadeListService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public listacidade: CidadeListService , private toast:ToastService) {
       this.cidadeLista$ = this.listacidade
           .getCidadeList()
           .snapshotChanges()
@@ -37,5 +38,12 @@ export class AdmCidadePage {
             }));
           });
   }
-  
+
+  removeItem(cidade: Cidade ){
+    this.listacidade.removeCidade(cidade).then(()=> {
+      this.navCtrl.setRoot('AdmHomePage');
+      this.toast.show(` ${cidade.nome} Excluido!`);
+    });
+  }
+
 }
