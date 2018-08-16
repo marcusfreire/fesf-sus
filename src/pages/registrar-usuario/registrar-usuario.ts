@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastService } from '../../service/toast/toast.service';
 
 /**
  * Generated class for the RegistrarUsuarioPage page.
@@ -20,12 +21,17 @@ export class RegistrarUsuarioPage {
   user = {} as User;
   err_texto:string = '';
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController,
+     public navParams: NavParams, private toast: ToastService) {
   }
 
   async registrar(user: User){
     try{
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.senha);
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email,user.senha).then(ref => {
+        console.log(ref.key);
+        this.toast.show(`Adicionado ${user.email} com Sucesso!`);
+        this.navCtrl.setRoot('AdmHomePage',{key: ref.key})
+      });
       console.log(result);
     }
     catch(e){

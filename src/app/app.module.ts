@@ -13,6 +13,7 @@ import { FIREBASE_CONFIG } from './firebase.credenciais';
 
 import { ColetaListService } from '../service/coleta-list/coleta-list.service';
 import { ToastService } from '../service/toast/toast.service';
+import { CidadeListService } from '../service/cidade-list/cidade-list.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ToastService } from '../service/toast/toast.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ColetaListService,
+    CidadeListService,
     ToastService,
   ]
 })

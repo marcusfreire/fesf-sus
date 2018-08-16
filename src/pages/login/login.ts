@@ -30,7 +30,11 @@ export class LoginPage {
       
       console.log(`USER.uid = ${result.uid}`);
       if (result) {
-        this.navCtrl.setRoot('HomePage');
+        if(result.uid=="XVvlO9eHeaeMgQMN7xV2XG7y4473"){
+          this.navCtrl.setRoot('AdmHomePage');
+        }else{
+          this.navCtrl.setRoot('HomePage');
+        }
       }
     } catch (error) {
     if (error.code === 'auth/wrong-password') {
