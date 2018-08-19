@@ -33,7 +33,7 @@ export class LoginPage {
         if(result.uid=="XVvlO9eHeaeMgQMN7xV2XG7y4473"){
           this.navCtrl.setRoot('AdmHomePage');
         }else{
-          this.navCtrl.setRoot('HomePage');
+          this.navCtrl.setRoot('HomeUserPage');
         }
       }
     } catch (error) {

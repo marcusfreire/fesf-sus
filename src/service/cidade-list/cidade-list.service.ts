@@ -5,7 +5,7 @@ import { Cidade } from "../../models/cidade";
 
 @Injectable()
 export class CidadeListService {
-    private cidadeListRef = this.db.list<Cidade>('cidades');
+    private cidadeListRef = this.db.list<Cidade>('cidades', ref => ref.orderByChild("nome"));
     constructor(private db: AngularFireDatabase){ }
 
     getCidadeList(){
@@ -13,12 +13,12 @@ export class CidadeListService {
     }
 
     busca(chave:string){
-        return this.db.list<Cidade>('cidades', ref => ref.orderByChild('nome').startAt(chave))
+        return this.db.list<Cidade>('cidades', ref => ref.orderByChild("nome"))
             .snapshotChanges()
             .map (Changes => {
                 return Changes.map(p => ({
                 chave: p.payload.key, ...p.payload.val()}));
-    })
+            })
     }
 
     addCidade(cidade: Cidade){

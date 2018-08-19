@@ -5,11 +5,19 @@ import { Item } from '../../models/item/item.models';
 import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
 import { ToastService } from '../../service/toast/toast.service';
 
+/**
+ * Generated class for the TabsEditPage tabs.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
 @IonicPage()
 @Component({
-  templateUrl: 'tabs.html'
+  selector: 'page-tabs-edit',
+  templateUrl: 'tabs-edit.html'
 })
-export class TabsPage {
+export class TabsEditPage {
   item: Item;
 
   tab1Root:string = "SocialPage";
@@ -32,11 +40,11 @@ export class TabsPage {
     this.navCtrl.setRoot('HomeUserPage');
   }
 
-  addItem(item: Item){
-    this.coleta.addItem(item).then(ref => {
+  editItem(item: Item){
+    this.coleta.editItem(item).then(ref => {
       console.log(`${item.data} na cidade de ${item.cidade} salva!`);
-      this.toast.show(`${item.data} Adicionado em ${item.cidade}`);
-      this.navCtrl.setRoot('HomeUserPage',{key: ref.key})
+      this.toast.show(`${item.data}, Atualizado em ${item.cidade}`);
+      this.navCtrl.setRoot('HomeUserPage');
     });
   }
 }

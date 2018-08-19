@@ -5,7 +5,8 @@ import { Item } from "../../models/item/item.models";
 
 @Injectable()
 export class ColetaListService {
-    private coletaListRef = this.db.list<Item>('coletas');
+    private coletaListRef = this.db.list<Item>('coletas',ref => ref.orderByChild('cidade'));
+    private teste = this.db.list<Item>('coletas',ref => ref.orderByChild('data'));
     constructor(private db: AngularFireDatabase){ }
 
     getColetaList(){
@@ -13,12 +14,15 @@ export class ColetaListService {
     }
 
     busca(chave:string){
-        return this.db.list<Item>('coletas', ref => ref.orderByChild('cidade').equalTo(chave))
-            .snapshotChanges()
-            .map (Changes => {
-                return Changes.map(p => ({
-                chave: p.payload.key, ...p.payload.val()}));
-    })
+        var teste = this.db.list<Item>('coletas',ref => ref.orderByChild('cidade').equalTo(chave));
+        return teste
+        .snapshotChanges()
+        .map(changes => {
+        return changes.map(c => ({
+            key: c.payload.key,
+            ...c.payload.val(),
+        }));
+        });
     }
 
     addItem(item: Item){
