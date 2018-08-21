@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AdmHome</ion-title>
+    <ion-title>Administrador</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="sair()">
+          <ion-icon name="exit">Sair</ion-icon>
+      </button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -17,34 +22,15 @@
   
   <ion-item text-wrap>
     Adicionar ou editar novos contatos para as coletas.
-  </ion-item>
-  <ion-item>
-      <button color="secondary" ion-button full round  
+    <button color="secondary" ion-button full round  
         navPush="RegistrarUsuarioPage"> Usuários
-      </button>    
+    </button>        
   </ion-item>
 
   <ion-item text-wrap>
     Adicionar ou editar novas cidades das coletas.
-  </ion-item>
-  <ion-item>
-      <button color="secondary" ion-button full round  
+    <button color="secondary" ion-button full round  
         navPush="AdmCidadePage"> Cidades
-      </button>    
+    </button>
   </ion-item>
-
-  <ion-item text-wrap>
-      Adicionar ou editar coletas.
-  </ion-item>
-  <ion-item>
-      <button color="secondary" ion-button full round  
-        navPush="HomeUserPage"> Coletas
-      </button>    
-  </ion-item>
-  <ion-item>
-    <button [color]="danger" ion-button icon-only (click)="sair()" full>
-      <ion-icon name="exit"> Sair </ion-icon>
-    </button>      
-  </ion-item>
-
 </ion-content>

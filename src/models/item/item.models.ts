@@ -2,6 +2,7 @@ export interface Item{
     key?:string;
     cidade:string;
     data:string;
+    user:string;
     A11:number;
     A12:number;
     A13:number;

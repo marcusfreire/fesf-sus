@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RegistrarUsuario</ion-title>
+    <ion-title>Registrar Usuário</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -25,8 +25,9 @@
           <ion-input type="password" [(ngModel)]="user.senha" ></ion-input>
       </ion-item>
       
-        <ion-label color="danger">{{err_texto}}</ion-label>
+      <ion-label color="danger">{{err_texto}}</ion-label>
     
-      <button ion-button (click)="registrar(user)">Registrar</button>
+      <button button color="secondary" ion-button full round
+       (click)="registrar(user)">Registrar</button>
 
 </ion-content>

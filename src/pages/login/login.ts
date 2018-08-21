@@ -30,7 +30,7 @@ export class LoginPage {
       
       console.log(`USER.uid = ${result.uid}`);
       if (result) {
-        if(result.uid=="XVvlO9eHeaeMgQMN7xV2XG7y4473"){
+        if(result.uid=="68AXOpXmgzYdGrEHoC5A9hbfOUh1"){
           this.navCtrl.setRoot('AdmHomePage');
         }else{
           this.navCtrl.setRoot('HomeUserPage');

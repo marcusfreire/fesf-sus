@@ -76,12 +76,7 @@ for (i in 1:length(cidades)){
   soma = cbind(soma,s)
 }
 colnames(soma)=c("Indicadores",levels(cidades))
-#Anotação
-desc = c("Número de gestantes com data provável do parto para o perı́odo atual que são mães solteiras","Número de gestantes com data provável do parto para o perı́odo atual que têm quatro ou mais filhos",
-        "Número de gestantes com data provável do parto para o perı́odo atual que perdeu algum filho com idade menor ou igual a um ano", 
-        "Número de gestantes com data provável do parto para o perı́odo atual que possuem uma renda familiar menor ou igual a um salário mı́nimo",
-        "Número de gestantes com data provável do parto para o perı́odo atual que apresentam quadro de desnutrição ou tem algum filho desnutrido",
-        "Número de gestantes analfabetas com data provável do parto para o perı́odo atual")
+
 #Subset para a cidade de Salvador
 #subset.data.frame(coletasFESF,coletasFESF$coletasCIDADE=="Salvador")
 # teste com o banco fesf-sus.csv

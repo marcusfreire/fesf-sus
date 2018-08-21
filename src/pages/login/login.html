@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar color="secondary">
     <ion-title>FESF - SUS</ion-title>
   </ion-navbar>
 
@@ -15,6 +15,7 @@
 
 <ion-content padding>
 
+  <ion-img style="width: 300px; height: 81px;" src="http://www.fesfsus.ba.gov.br/wp-content/uploads/2014/04/logo1-300x81.png"></ion-img>
   <ion-item>
     <ion-label floating>Endereço de Email</ion-label>
     <ion-input type="text" [(ngModel)]="user.email" ></ion-input>
@@ -27,7 +28,7 @@
 
   <ion-label color="danger">{{err_texto}}</ion-label>
 
-  <button ion-button (click)="login(user)" full>Entrar</button>
-  <button ion-button (click)="resetarSenha()" color="light" full>Esqueceu a Senha?</button>
+  <button ion-button color="secondary" full round (click)="login(user)">Entrar</button>
+  <button ion-button block clear (click)="resetarSenha()">Esqueceu a Senha?</button>
   
 </ion-content>

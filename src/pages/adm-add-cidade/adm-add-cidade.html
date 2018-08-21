@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AdmADDCidade</ion-title>
+    <ion-title>{{cidade?.nome}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,5 +26,5 @@
     <ion-label color="primary" stacked>Longitude:</ion-label>
     <ion-input type="number" [(ngModel)]="cidade.longitude"></ion-input>
   </ion-item>
-  <button ion-button block clear (click)="addCidade(cidade)">Add</button>
+  <button color="secondary" ion-button full round (click)="addCidade(cidade)">Add</button>
 </ion-content>

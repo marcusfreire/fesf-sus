@@ -22,11 +22,11 @@
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="item.data"></ion-datetime>
   </ion-item>
   <ion-item>    
-      <button [color]="secondary" ion-button full (click)="verificaCidade(cidade,item.data)"
-      navPush="TabsPage" [navParams]="{item: item}">
+      <button [color]="flag ? 'danger' : 'secondary'" ion-button full round (click)="verificaCidade(cidade,item.data)">
         <ion-icon name="add-circle"> Adicionar Coleta </ion-icon>
       </button>      
-    </ion-item>
+  </ion-item>
+  <ion-label color="danger">{{err_texto}}</ion-label>
   <ion-list>  
       <ion-item-sliding *ngFor="let amostra of (coletaLista$ | async)?.slice().reverse()" #slidingItem>
           <ion-item>

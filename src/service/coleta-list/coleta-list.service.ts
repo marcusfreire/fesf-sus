@@ -6,7 +6,6 @@ import { Item } from "../../models/item/item.models";
 @Injectable()
 export class ColetaListService {
     private coletaListRef = this.db.list<Item>('coletas',ref => ref.orderByChild('cidade'));
-    private teste = this.db.list<Item>('coletas',ref => ref.orderByChild('data'));
     constructor(private db: AngularFireDatabase){ }
 
     getColetaList(){
@@ -23,6 +22,19 @@ export class ColetaListService {
             ...c.payload.val(),
         }));
         });
+    }
+
+    busca2(chave:string, data: string){
+        var flag =false
+        var teste = this.db.list<Item>('coletas',ref => ref.orderByChild('cidade'));
+        teste.query.equalTo(chave)
+            .on('child_added', function(snapshot) { 
+                var date = snapshot.val();
+                if(date.data == data){
+                    flag = true
+                }
+            });
+        return flag;
     }
 
     addItem(item: Item){

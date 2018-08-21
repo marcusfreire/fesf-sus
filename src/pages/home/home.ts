@@ -15,6 +15,7 @@ export class HomePage {
   item: Item = {
     cidade:'',
     data:'',
+    user:'',
     A11:0,
     A12:0,
     A13:0,

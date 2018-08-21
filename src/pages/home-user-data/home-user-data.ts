@@ -22,6 +22,7 @@ import { ToastService } from '../../service/toast/toast.service';
 export class HomeUserDataPage {
   item: Item = {
     cidade:'',
+    user:'',
     data:'',
     A11:0,
     A12:0,
@@ -62,33 +63,46 @@ export class HomeUserDataPage {
 
   cidade: string = '';
 
+  flag = false;
+
+  err_texto:string = '';
+
   coletaLista$: Observable<Item[]>;
 
-  private _flag: Boolean;
- 
-  public set flag(value: Boolean) {
-    this._flag = value;
-  }
-
   constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, 
-    public navParams: NavParams, public coleta: ColetaListService, private toast:ToastService) {
-      this.coletaLista$ = coleta.busca(this.navParams.get('cidade'))
+    public navParams: NavParams, public coleta: ColetaListService, private toastService: ToastService) {
+      this.coletaLista$ = coleta.busca(this.navParams.get('cidade'));
   }
   
   verificaCidade(cidade:string, data:string){
-    console.log(`Cidade: ${cidade}, na data: ${data}, Verificando!`);    
+    this.flag = this.coleta.busca2(cidade,data);
+    if(this.item.data==''){
+      this.err_texto = "Campo Data vazio";
+    }
+    if(this.flag){
+      this.err_texto = "Essa data já foi adicionada, edite abaixo";
+    }
+    else{if(this.item.data!='')
+      this.navCtrl.push("TabsPage",{item: this.item});
+    }
   }
 
   ionViewWillLoad() {
     this.cidade = this.navParams.get('cidade');
     this.item.cidade = this.cidade;
-    console.log(this.cidade);
+    this.afAuth.authState.subscribe(data =>{
+      if (data && data.email && data.uid){
+        this.item.user = data.email;         
+      }else{
+        this.navCtrl.setRoot('LoginPage');           
+      }
+    })
   }
 
   removeItem(item: Item ){
     this.coleta.removeItem(item).then(()=> {
       this.navCtrl.setRoot('HomeUserPage');
-      this.toast.show(` ${item.data} ,${item.cidade} Excluido!`);
+      this.toastService.show(` ${item.data} ,${item.cidade} Excluido!`);
     });
   }
 
