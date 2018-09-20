@@ -1,0 +1,12 @@
+<ion-tabs >
+        <ion-fab right middle>
+            <button ion-fab color="secondary" (click)="editItem(item)"><ion-icon name="create"></ion-icon></button>
+            <button ion-fab color="danger" (click)="cancelar()"><ion-icon name="close-circle"></ion-icon></button>
+        </ion-fab>
+        <ion-tab [root]="tab1Root" tabTitle="Social" tabIcon="home" [rootParams]="{item: item}"></ion-tab>
+        <ion-tab [root]="tab2Root" tabTitle="Pré-Parto" tabIcon="information-circle" [rootParams]="{item: item}"></ion-tab>
+        <ion-tab [root]="tab3Root" tabTitle="Parto" tabIcon="contacts" [rootParams]="{item: item}"></ion-tab>
+        <ion-tab [root]="tab4Root" tabTitle="Intercorrencias" tabIcon="bookmark" [rootParams]="{item: item}"></ion-tab>
+        <ion-tab [root]="tab5Root" tabTitle="Boas Práticas" tabIcon="body" [rootParams]="{item: item}"></ion-tab>
+        <ion-tab [root]="tab6Root" tabTitle="Puerpério" tabIcon="clipboard" [rootParams]="{item: item}"></ion-tab>
+      </ion-tabs>
