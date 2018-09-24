@@ -8,18 +8,17 @@
 
   <ion-navbar>
     <ion-title>Registrar Cidade</ion-title>
+    <ion-buttons end>
+        <button color="secondary" ion-button navPush="AdmAddCidadePage">
+          <ion-icon name="add-circle">ADD</ion-icon>
+        </button>
+    </ion-buttons>             
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <ion-label>Adicionar nova cidade</ion-label>
-  <ion-item>    
-    <button color="secondary" ion-button full round  navPush="AdmAddCidadePage">
-      <ion-icon name="add-circle"> Adicionar Cidade </ion-icon>
-    </button>      
-  </ion-item>
+<ion-content padding>  
   <ion-list>
     <ion-list-header>Cidades Adicionadas:</ion-list-header>    
     <ion-item-sliding *ngFor="let city of cidadeLista$ | async" #slidingItem>

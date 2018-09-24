@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
 
-import { AngularFireAuth } from 'angularfire2/auth';
 import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
 import { Observable } from 'rxjs/Observable';
 import { Item } from '../../models/item/item.models';
 import { ToastService } from '../../service/toast/toast.service';
+import { User } from '../../models/user';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the HomeUserDataPage page.
@@ -21,6 +22,7 @@ import { ToastService } from '../../service/toast/toast.service';
 })
 export class HomeUserDataPage {
   item: Item = {
+    validar:false,
     cidade:'',
     user:'',
     data:'',
@@ -61,7 +63,7 @@ export class HomeUserDataPage {
     A65:0,
     };
 
-  cidade: string = '';
+  user = {} as User;
 
   flag = false;
 
@@ -69,13 +71,19 @@ export class HomeUserDataPage {
 
   coletaLista$: Observable<Item[]>;
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, 
+  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, 
     public navParams: NavParams, public coleta: ColetaListService, private toastService: ToastService) {
-      this.coletaLista$ = coleta.busca(this.navParams.get('cidade'));
+  }
+
+  ionViewWillLoad() {
+    this.user = this.navParams.get('User');
+    this.item.cidade = this.user.cidade;
+    console.log(`HomeUser ${this.user.cidade}`);
+    this.coletaLista$ = this.coleta.busca(this.user.cidade);
   }
   
-  verificaCidade(cidade:string, data:string){
-    this.flag = this.coleta.busca2(cidade,data);
+  verificaCidade(data:string){
+    this.flag = this.coleta.busca2(this.user.cidade,data);
     if(this.item.data==''){
       this.err_texto = "Campo Data vazio";
     }
@@ -83,26 +91,20 @@ export class HomeUserDataPage {
       this.err_texto = "Essa data já foi adicionada, edite abaixo";
     }
     else{if(this.item.data!='')
+      this.item.user = this.user.email;
       this.navCtrl.push("TabsPage",{item: this.item});
     }
   }
 
-  ionViewWillLoad() {
-    this.cidade = this.navParams.get('cidade');
-    this.item.cidade = this.cidade;
-    this.afAuth.authState.subscribe(data =>{
-      if (data && data.email && data.uid){
-        this.item.user = data.email;         
-      }else{
-        this.navCtrl.setRoot('LoginPage');           
-      }
-    })
-  }
-
   removeItem(item: Item ){
     this.coleta.removeItem(item).then(()=> {
-      this.navCtrl.setRoot('HomeUserPage');
       this.toastService.show(` ${item.data} ,${item.cidade} Excluido!`);
+    });
+  }
+
+  sair(){
+    this.afAuth.auth.signOut().then(() => {
+      this.navCtrl.setRoot('LoginPage');
     });
   }
 

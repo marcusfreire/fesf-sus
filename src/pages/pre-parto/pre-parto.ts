@@ -16,6 +16,5 @@ export class PrePartoPage {
 
   ionViewWillLoad() {
     this.item = this.navParams.get('item');
-    console.log(this.item.A21);
   }
 }

@@ -35,7 +35,7 @@ export class LoginPage {
           if(statususer.coordenador){
             this.navCtrl.setRoot('AdmHomePage', {User:statususer});
           }else{
-            this.navCtrl.setRoot('HomeUserPage');
+            this.navCtrl.setRoot('HomeUserDataPage',{User:statususer});
           }  
         })
       }

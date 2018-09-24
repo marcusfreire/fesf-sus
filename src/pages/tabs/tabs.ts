@@ -25,18 +25,17 @@ export class TabsPage {
     
   ionViewWillLoad() {
     this.item = this.navParams.get('item');
-    console.log(`Carregando ${this.item.cidade}`);
   }
 
   cancelar(){
-    this.navCtrl.setRoot('HomeUserPage');
+    this.navCtrl.pop();
   }
 
   addItem(item: Item){
     this.coleta.addItem(item).then(ref => {
       console.log(`${item.data} na cidade de ${item.cidade} salva!`);
       this.toast.show(`${item.data} Adicionado em ${item.cidade}`);
-      this.navCtrl.setRoot('HomeUserPage',{key: ref.key})
+      this.navCtrl.pop();
     });
   }
 }

@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{cidade}}</ion-title>
+    <ion-title>{{user.cidade}}</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="sair()">
+          <ion-icon name="exit">Sair</ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,14 +20,15 @@
 
 <ion-content padding>
   <ion-item text-wrap>
-      Escolha a data da coleta para a cidade: {{cidade}}, na data {{item.data}}.
+      <p>Olá {{user.nome}},</p>
+      <p>Escolha a data da coleta para a cidade: {{user.cidade}}.</p>      
   </ion-item>
   <ion-item>
       <ion-label>Data:</ion-label>
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="item.data"></ion-datetime>
   </ion-item>
   <ion-item>    
-      <button [color]="flag ? 'danger' : 'secondary'" ion-button full round (click)="verificaCidade(cidade,item.data)">
+      <button [color]="flag ? 'danger' : 'secondary'" ion-button full round (click)="verificaCidade(item.data)">
         <ion-icon name="add-circle"> Adicionar Coleta </ion-icon>
       </button>      
   </ion-item>
@@ -30,11 +36,10 @@
   <ion-list>  
       <ion-item-sliding *ngFor="let amostra of (coletaLista$ | async)?.slice().reverse()" #slidingItem>
           <ion-item>
-              <p>cidade:{{amostra.cidade}}</p>
               <p>Data:{{amostra.data}}</p>
            </ion-item>
             <ion-item-options>
-              <button ion-button navPush="TabsEditPage" [navParams]="{item: amostra}"><ion-icon name="create"></ion-icon>Editar</button>
+              <button ion-button navPush="TabsEditPage" [navParams]="{item: amostra, email:user.email}"><ion-icon name="create"></ion-icon>Editar</button>
               <button ion-button color="danger" (click)="removeItem(amostra)"><ion-icon name="trash"></ion-icon>Apagar</button>
             </ion-item-options>
       </ion-item-sliding>

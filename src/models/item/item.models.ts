@@ -3,6 +3,7 @@ export interface Item{
     cidade:string;
     data:string;
     user:string;
+    validar:boolean;
     A11:number;
     A12:number;
     A13:number;
