@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,23 +20,26 @@ export class LoginPage {
 
   user = {} as User;
   err_texto:string = '';
-
-
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  senha:string = '';
+  perfil: AngularFireObject<User>;
+  
+  constructor(private afAuth: AngularFireAuth,private afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   async login(user:User){
     try {
-      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.senha);
-      
-      console.log(`USER.uid = ${result.uid}`);
-      if (result) {
-        if(result.uid=="68AXOpXmgzYdGrEHoC5A9hbfOUh1"){
-          this.navCtrl.setRoot('AdmHomePage');
-        }else{
-          this.navCtrl.setRoot('HomeUserPage');
-        }
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,this.senha);
+      if (result){
+        this.perfil = this.afDatabase.object(`perfil/${result.uid}`);
+        this.perfil.valueChanges().subscribe(statususer => {
+          if(statususer.coordenador){
+            this.navCtrl.setRoot('AdmHomePage', {User:statususer});
+          }else{
+            this.navCtrl.setRoot('HomeUserPage');
+          }  
+        })
       }
+      console.log(`USER.uid = ${result.uid}`);
     } catch (error) {
     if (error.code === 'auth/wrong-password') {
         this.err_texto = "Senha Incorreta";

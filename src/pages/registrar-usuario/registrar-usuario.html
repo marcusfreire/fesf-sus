@@ -15,19 +15,36 @@
 
 <ion-content padding>
 
-    <ion-item>
+  <ion-item>
+    <ion-label>Coordenador</ion-label>
+    <ion-checkbox [(ngModel)]="user.coordenador"></ion-checkbox>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="user.nome" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Cidades:</ion-label>  
+    <ion-select [(ngModel)]="user.cidade">
+      <ion-option *ngFor="let city of cidadeLista$ | async" value="{{city.nome}}">{{city.nome}} </ion-option>
+    </ion-select>
+  </ion-item>  
+
+  <ion-item>
         <ion-label floating>Endereço de Email</ion-label>
         <ion-input type="text" [(ngModel)]="user.email" ></ion-input>
-      </ion-item>
-    
-      <ion-item>
-          <ion-label floating>Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="user.senha" ></ion-input>
-      </ion-item>
+    </ion-item>
+  
+    <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="senha" ></ion-input>
+    </ion-item>
       
-      <ion-label color="danger">{{err_texto}}</ion-label>
+    <ion-label color="danger">{{err_texto}}</ion-label>
     
-      <button button color="secondary" ion-button full round
-       (click)="registrar(user)">Registrar</button>
+    <button button color="secondary" ion-button full round
+      (click)="registrar(user)">Registrar</button>
 
 </ion-content>

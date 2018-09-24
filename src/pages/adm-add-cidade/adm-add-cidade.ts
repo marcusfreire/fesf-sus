@@ -32,7 +32,7 @@ export class AdmAddCidadePage {
     this.listacidade.addCidade(cidade).then(ref => {
       console.log(ref.key);
       this.toast.show(`Salvando ${cidade.nome}`);
-      this.navCtrl.setRoot('AdmHomePage',{key: ref.key})
+      this.navCtrl.pop();
     });
   }
 

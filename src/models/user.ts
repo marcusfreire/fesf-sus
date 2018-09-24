@@ -1,4 +1,6 @@
 export interface User{
+    nome:string;
+    cidade:string;
     email:string;
-    senha:string;
+    coordenador:boolean;
 }

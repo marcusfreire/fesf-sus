@@ -41,7 +41,6 @@ export class AdmCidadePage {
 
   removeItem(cidade: Cidade ){
     this.listacidade.removeCidade(cidade).then(()=> {
-      this.navCtrl.setRoot('AdmHomePage');
       this.toast.show(` ${cidade.nome} Excluido!`);
     });
   }

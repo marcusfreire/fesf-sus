@@ -29,7 +29,7 @@ export class AdmEditCidadePage {
 
   editCidade(cidade: Cidade ){
     this.listacidade.editCidade(cidade).then(()=> {
-      this.navCtrl.setRoot('AdmHomePage');
+      this.navCtrl.pop();
       this.toast.show(`${cidade.nome} Atualizado!`);
     });
   }
