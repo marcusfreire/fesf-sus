@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>fesf</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <name>Fesf</name>
+    <description>Aplicativo para coleta dos indicadores para Fundação Estatal Saúde da Familia.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
