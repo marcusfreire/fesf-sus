@@ -9,11 +9,11 @@
 
 <ion-content padding>
     <ion-item>
-        <ion-label>A41: </ion-label>
-        <ion-input [(ngModel)]="item.A41" type="number" min="0"></ion-input>
+        <button item-start ion-button clear (click)="A41()">A41 : </button>
+        <ion-input item-end [(ngModel)]="item.A41" type="number" min="0"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>A42: </ion-label>
-        <ion-input [(ngModel)]="item.A42" type="number" min="0"></ion-input>
+        <button item-start ion-button clear (click)="A42()">A42 : </button>
+        <ion-input item-end [(ngModel)]="item.A42" type="number" min="0"></ion-input>
     </ion-item>
 </ion-content>

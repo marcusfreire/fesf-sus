@@ -14,6 +14,7 @@ import { FIREBASE_CONFIG } from './firebase.credenciais';
 import { ColetaListService } from '../service/coleta-list/coleta-list.service';
 import { ToastService } from '../service/toast/toast.service';
 import { CidadeListService } from '../service/cidade-list/cidade-list.service';
+import { AlertService } from '../service/alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { CidadeListService } from '../service/cidade-list/cidade-list.service';
     ColetaListService,
     CidadeListService,
     ToastService,
+    AlertService,
   ]
 })
 export class AppModule {}
