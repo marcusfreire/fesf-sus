@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams} from 'ionic-angular';
-
-import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../models/user';
 import { Observable } from 'rxjs/Observable';
 import { Item } from '../../models/item/item.models';
+import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
 import { ToastService } from '../../service/toast/toast.service';
-import { User } from '../../models/user';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
- * Generated class for the HomeUserDataPage page.
+ * Generated class for the AdmValidarPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -17,10 +15,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-home-user-data',
-  templateUrl: 'home-user-data.html',
+  selector: 'page-adm-validar',
+  templateUrl: 'adm-validar.html',
 })
-export class HomeUserDataPage {
+export class AdmValidarPage {
   item: Item = {
     comentario:'',
     validar:false,
@@ -66,43 +64,22 @@ export class HomeUserDataPage {
 
   user = {} as User;
 
-  flag = false;
-  
   coletaLista$: Observable<Item[]>;
-
-  constructor(private afAuth: AngularFireAuth,public navCtrl: NavController, 
+  
+  constructor(public navCtrl: NavController, 
     public navParams: NavParams, public coleta: ColetaListService, private toastService: ToastService) {
   }
 
   ionViewWillLoad() {
     this.user = this.navParams.get('User');
     this.item.cidade = this.user.cidade;
-    console.log(`HomeUser ${this.user.cidade}`);
+    console.log(`Coordenador validar ${this.user.cidade}`);
     this.coletaLista$ = this.coleta.busca(this.user.cidade);
-  }
-  
-  verificaCidade(data:string){
-    this.flag = this.coleta.busca2(this.user.cidade,data);
-    if(this.item.data==''){
-      this.toastService.show('Campo Data vazio');
-    }else if(this.flag){
-      this.toastService.show('Essa data já foi adicionada, edite abaixo');
-    }
-    else{if(this.item.data!='')
-      this.item.user = this.user.email;
-      this.navCtrl.push("TabsPage",{item: this.item});
-    }
   }
 
   removeItem(item: Item ){
     this.coleta.removeItem(item).then(()=> {
       this.toastService.show(` ${item.data} ,${item.cidade} Excluido!`);
-    });
-  }
-
-  sair(){
-    this.afAuth.auth.signOut().then(() => {
-      this.navCtrl.setRoot('LoginPage');
     });
   }
 

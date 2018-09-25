@@ -1,5 +1,6 @@
 <ion-tabs >
     <ion-fab right middle>
+        <button ion-fab [color]="item.validar ? 'secondary' : 'light'" (click)="validar()"><ion-icon name="checkmark-circle"></ion-icon></button>
         <button ion-fab color="primary" navPush="ColetaComentarioPage" [navParams]="{item: item}"><ion-icon name="list-box"></ion-icon></button>
         <button ion-fab color="secondary" (click)="editItem(item)"><ion-icon name="create"></ion-icon></button>
         <button ion-fab color="danger" (click)="cancelar()"><ion-icon name="close-circle"></ion-icon></button>

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { Item } from '../../models/item/item.models';
 import { ColetaListService } from '../../service/coleta-list/coleta-list.service';
 import { ToastService } from '../../service/toast/toast.service';
 
 /**
- * Generated class for the TabsEditPage tabs.
+ * Generated class for the TabsValidarPage tabs.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,10 +13,10 @@ import { ToastService } from '../../service/toast/toast.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-tabs-edit',
-  templateUrl: 'tabs-edit.html'
+  selector: 'page-tabs-validar',
+  templateUrl: 'tabs-validar.html'
 })
-export class TabsEditPage {
+export class TabsValidarPage {
   item: Item;
 
   tab1Root:string = "SocialPage";
@@ -34,8 +33,15 @@ export class TabsEditPage {
   ionViewWillLoad() {
     this.item = this.navParams.get('item');
     this.item.user = this.navParams.get('email');
-    this.item.validar = false;
     console.log(`Carregando ${this.item.user}`);
+  }
+
+  validar(){
+    if(this.item.validar){
+      this.item.validar = false;
+    }else{
+      this.item.validar = true;
+    }
   }
 
   cancelar(){

@@ -32,12 +32,16 @@
         <ion-icon name="add-circle"> Adicionar Coleta </ion-icon>
       </button>      
   </ion-item>
-  <ion-label color="danger">{{err_texto}}</ion-label>
   <ion-list>  
       <ion-item-sliding *ngFor="let amostra of (coletaLista$ | async)?.slice().reverse()" #slidingItem>
-          <ion-item>
-              <p>Data:{{amostra.data}}</p>
-           </ion-item>
+          <ion-item>              
+            <ion-buttons end>
+                Data: {{amostra.data}}
+                <button [color]="amostra.validar ? 'secondary' : 'light'" ion-button>
+                  <ion-icon name="checkmark-circle"></ion-icon>
+                </button>
+            </ion-buttons>                    
+           </ion-item>  
             <ion-item-options>
               <button ion-button navPush="TabsEditPage" [navParams]="{item: amostra, email:user.email}"><ion-icon name="create"></ion-icon>Editar</button>
               <button ion-button color="danger" (click)="removeItem(amostra)"><ion-icon name="trash"></ion-icon>Apagar</button>
