@@ -23,6 +23,7 @@ export interface Item{
     A33:number; 
     A34:number;
     A35:number;
+    A36:number;
     A41:number;
     A42:number;
     A51:number;

@@ -43,6 +43,7 @@ export class AdmValidarPage {
     A33:0,
     A34:0,
     A35:0,
+    A36:0,
     A41:0,
     A42:0,
     A51:0,
