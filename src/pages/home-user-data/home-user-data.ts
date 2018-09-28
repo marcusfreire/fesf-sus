@@ -40,13 +40,11 @@ export class HomeUserDataPage {
     A25:0,
     A26:0,
     A27:0,
-    A28:0,
     A31:0,
     A32:0,
     A33:0,
     A34:0,
     A35:0,
-    A36:0,
     A41:0,
     A42:0,
     A51:0,
@@ -60,8 +58,6 @@ export class HomeUserDataPage {
     A61:0,
     A62:0,
     A63:0,
-    A64:0,
-    A65:0,
     };
 
   user = {} as User;

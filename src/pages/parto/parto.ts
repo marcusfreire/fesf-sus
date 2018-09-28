@@ -21,7 +21,7 @@ export class PartoPage {
     this.alert.show('A32','Número de partos naturais realizados pelo(a) enfermeiro(a) obstetra no período.');
   }
   A33() {
-    this.alert.show('A33','Número de partos naturais realizados e registrados em AIH (Autorização de Internação Hospitalar) pelo(a) enfermeiro(a) obstetra no período e número de partos ocorridos no HPP, de residentes em outros municípios');
+    this.alert.show('A33','Número de partos naturais realizados e registrados em AIH (Autorização de Internação Hospitalar) pelo(a) enfermeiro(a) obstetra no período e número de partos ocorridos no HPP, de residentes em outros municípios.');
   }
   A34() {
     this.alert.show('A34','Número de gestantes encaminhadas com previsão de risco no parto.');
