@@ -28,16 +28,13 @@ export class PrePartoPage {
     this.alert.show('A24','Número de gestantes assistidas no pré-natal com previsão de risco no parto.');
   }
   A25() {
-    this.alert.show('A25','Número de atividades na sala de espera realizadas no período.');
+    this.alert.show('A25','Número de atividades de roda de conversa com mulheres (gestantes, nutrizes com acompanhante).');
   }
   A26() {
-    this.alert.show('A26','Número de atividades de roda de conversa com mulheres (gestantes, nutrizes com acompanhante).');
+    this.alert.show('A26','Número de reuniões realizadas com a Atenção Básica para planejamento das ações no território.');
   }
   A27() {
-    this.alert.show('A27','Número de reuniões realizadas com a Atenção Básica para planejamento das ações no território.');
-  }
-  A28() {
-    this.alert.show('A28','Número de oficinas de Educação Permanente realizadas no período.');
+    this.alert.show('A27','Número de oficinas de Educação Permanente realizadas no período.');
   }
 
 

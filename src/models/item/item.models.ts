@@ -18,13 +18,11 @@ export interface Item{
     A25:number;
     A26:number;
     A27:number;
-    A28:number;
     A31:number;
     A32:number;
-    A33:number;
+    A33:number; 
     A34:number;
     A35:number;
-    A36:number;
     A41:number;
     A42:number;
     A51:number;
@@ -38,6 +36,4 @@ export interface Item{
     A61:number;
     A62:number;
     A63:number;
-    A64:number;
-    A65:number;
 }

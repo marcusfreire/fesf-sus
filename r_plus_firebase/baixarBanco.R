@@ -15,15 +15,22 @@ cidadesFesf_sus = download(projectURL = "https://fesf-sus.firebaseio.com/", file
 #bancoFesf_sus[[1]]
 
 #Variaveis para adicionar os dados do banco FireBase Como Matriz
-coletasINT = matrix(nrow=length(bancoFesf_sus),ncol=(length(bancoFesf_sus[[1]])-2))
+# 5 seria o numero de variaves extra
+coletasINT = matrix(nrow=length(bancoFesf_sus),ncol=(length(bancoFesf_sus[[1]])-5))
 coletasCIDADE = c()
 coletasDATA = c()
+coletasValidar = c()
+coletasComentario = c()
+coletasModificacao = c()
 
 #Adicionando os dados na matriz
 for (i in 1:length(bancoFesf_sus)){
   coletasDATA[i] = bancoFesf_sus[[i]][["data"]]
   coletasCIDADE[i] = bancoFesf_sus[[i]][["cidade"]]
-  for (j in 1:(length(bancoFesf_sus[[1]])-2)){
+  coletasValidar[i] = bancoFesf_sus[[i]][["validar"]]
+  coletasComentario[i] = bancoFesf_sus[[i]][["comentario"]]
+  coletasModificacao[i] = bancoFesf_sus[[i]][["user"]]
+  for (j in 1:(length(bancoFesf_sus[[1]])-5)){
     coletasINT[i,j]=as.integer(bancoFesf_sus[[i]][[j]])
   }
 }
@@ -36,7 +43,7 @@ coletasCIDADE=as.factor(coletasCIDADE)
 colnames(coletasINT) <- names(bancoFesf_sus[[1]])[1:35]
 
 #Criando para dataFrame
-coletasFESF=data.frame(data,coletasCIDADE,coletasINT)
+coletasFESF=data.frame(Data = data, Cidade = coletasCIDADE,coletasINT,Validar = coletasValidar, User = coletasModificacao,Comentario = coletasComentario)
 #Verificando o dataFrame
 
 ############################# Cidades add
@@ -59,7 +66,7 @@ cidades=as.factor(cidades)
 #Frequência das coletas
 freq = rep.int(0,length(cidades))
 freqCidades=data.frame(cidades,freq)
-coletasfreq = table(coletasFESF$coletasCIDADE)
+coletasfreq = table(coletasFESF$Cidade)
 nomes = labels(coletasfreq)
 for (i in 1:length(coletasfreq)){
   freqCidades[which(cidades==nomes[[1]][i]),2] = coletasfreq[[i]] 

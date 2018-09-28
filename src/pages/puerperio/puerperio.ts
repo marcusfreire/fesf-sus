@@ -16,19 +16,13 @@ export class PuerperioPage {
   }
 
   A61() {
-    this.alert.show('A61','Número de consultas com puerpéras realizadas no mês, conforme necessidade identificada pelo(a) enfermeiro(a) obstetra.');
+    this.alert.show('A61','Número de RN, de parto assistido por ENFO, que demandou avaliação com pediatra.');
   }
   A62() {
-    this.alert.show('A62','Número de consultas de recém-nascidos realizadas no mês, conforme necessidade identificada pelo(a) enfermeiro(a) obstetra.');
+    this.alert.show('A62','Número de recém-nascidos que foram vacinados (BCG e Hepatite B) no HPP.');
   }
   A63() {
-    this.alert.show('A63','Número de consultas realizadas com recém-nascidos que demandaram encaminhamento com pediatra.');
-  }
-  A64() {
-    this.alert.show('A64','Número de recém-nascidos que foram vacinados (BCG e Hepatite B) no HPP.');
-  }
-  A65() {
-    this.alert.show('A65','Agendamento, pelos HPP\'s, da consulta puerperal na Unidade de Saúde da Família, no momento da alta.');
+    this.alert.show('A63','Agendamento, pelos HPP\'s, da consulta puerperal na Unidade de Saúde da Família, no momento da alta.');
   }
 
 
