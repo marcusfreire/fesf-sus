@@ -1,10 +1,11 @@
 # ui.R
 
-dashboardPage(
+dashboardPage( skin = "green",
   dashboardHeader(title = "FESF-SUS"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Mapa Geral", tabName = "aba1", icon = icon("globe")),
+      menuItem("Dados", tabName = "aba8", icon = icon("book")),
+      menuItem("Mapa Geral", tabName = "aba1", icon = icon("globe"), badgeColor = "green"),
       menuItem("Socioeconômicos", tabName = "aba2", icon = icon("home")),
       menuItem("Pré-Parto", tabName = "aba3", icon = icon("info")),
       menuItem("Parto", tabName = "aba4", icon = icon("users")),
@@ -16,7 +17,9 @@ dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "aba1",
-        htmlOutput("maps")
+        column(4, leafletOutput("mymap")),
+        column(6, htmlOutput("tbl"))
+              
       ),
       tabItem(tabName = "aba2",
         h2("Indicadores Socioeconômicos"),
@@ -37,10 +40,9 @@ dashboardPage(
         h5("A22: Número de consultas de pré-natal realizadas a partir da 36º semana pelo(a) enfermeiro(a) obstetra."),
         h5("A23: Número de gestantes que visitaram HPP's no período."),
         h5("A24: Número de gestantes assistidas no pré-natal com previsão de risco no parto."),
-        h5("A25: Número de atividades na sala de espera realizadas no período."),
-        h5("A26: Número de atividades de roda de conversa com mulheres (gestantes, nutrizes com acompanhante)."),
-        h5("A27: Número de reuniões realizadas com a Atenção Básica para planejamento das ações no território."),
-        h5("A28: Número de oficinas de Educação Permanente realizadas no período.")
+        h5("A25: Número de atividades de roda de conversa com mulheres (gestantes, nutrizes com acompanhante)."),
+        h5("A26: Número de reuniões realizadas com a Atenção Básica para planejamento das ações no território."),
+        h5("A27: Número de oficinas de Educação Permanente realizadas no período.")
 
       ),
       tabItem(tabName = "aba4",
@@ -49,10 +51,10 @@ dashboardPage(
         htmlOutput("parto2"),
         h5("A31: Número de partos realizados nos HPP's."),
         h5("A32: Número de partos naturais realizados pelo(a) enfermeiro(a) obstetra no período."),
-        h5("A33: Número de partos naturais realizados e registrados em AIH (Autorização de Internação Hospitalar) pelo(a) enfermeiro(a) obstetra no período."),
-        h5("A34: Número de gestantes encaminhadas com previsão de risco no parto."),
-        h5("A35: Número de natimortos em partos realizados pelo(a) enfermeiro(a) obstetra nos HPP's no período."),
-        h5("A36: Número de nascidos vivos residentes no município.")
+        h5("A33: Número de partos ocorridos no HPP, no mês, de residentes em outros municípios."),
+        h5("A34: Número de partos naturais realizados e registrados em AIH (Autorização de Internação Hospitalar) pelo(a) enfermeiro(a) obstetra no período."),
+        h5("A35: Número de gestantes encaminhadas com previsão de risco no parto."),
+        h5("A36: Número de natimortos em partos realizados pelo(a) enfermeiro(a) obstetra nos HPP's no período.")
       ),
       tabItem(tabName = "aba5",
         h2("Indicadores Intercorrências"),
@@ -78,11 +80,20 @@ dashboardPage(
         h2("Indicadores Puerpério"),
         htmlOutput("puerp"),
         htmlOutput("puerp2"),
-        h5("A61: Número de consultas com puerpéras realizadas no mês, conforme necessidade identificada pelo(a) enfermeiro(a) obstetra."),
-        h5("A62: Número de consultas de recém-nascidos realizadas no mês, conforme necessidade identificada pelo(a) enfermeiro(a) obstetra."),
-        h5("A63: Número de consultas realizadas com recém-nascidos que demandaram encaminhamento com pediatra."),
-        h5("A64: Número de recém-nascidos que foram vacinados (BCG e Hepatite B) no HPP."),
-        h5("A65: Agendamento, pelos HPP's, da consulta puerperal na Unidade de Saúde da Família, no momento da alta.")
+        h5("A61: Número de RN, de parto assistido por ENFO, que demandou avaliação com pediatra."),
+        h5("A62: Número de recém-nascidos que foram vacinados (BCG e Hepatite B) no HPP."),
+        h5("A63: Agendamento, pelos HPP's, da consulta puerperal na Unidade de Saúde da Família, no momento da alta.")
+      ),
+      tabItem(tabName = "aba8",
+          titlePanel("Filtro para visualizar os dados"),
+          dateRangeInput('dateRange',
+              label = 'Nesse filtro poderá escolher a data inicial e final das coletas',
+              format = 'dd-mm-yyyy',
+              start = "2017-12-01" , end = "2018-12-01",
+              language = 'pt-BR',
+              separator = 'até'
+            ),
+          dataTableOutput('my_table')
       )
     )
   )
