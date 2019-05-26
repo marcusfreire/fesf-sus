@@ -11,7 +11,7 @@ cidadesFesf_sus = download(projectURL = "https://fesf-sus.firebaseio.com/", file
 
 #Variaveis para adicionar os dados do banco FireBase Como Matriz
 # 5 seria o numero de variaves extra
-coletasINT = matrix(nrow=length(bancoFesf_sus),ncol=(length(bancoFesf_sus[[1]])-5))
+coletasINT = matrix(nrow=length(bancoFesf_sus),ncol=(length(bancoFesf_sus[[1]])-6))
 coletasCIDADE = c()
 coletasDATA = c()
 coletasValidar = c()
@@ -33,7 +33,6 @@ for (i in 1:length(bancoFesf_sus)){
 #Convertendo para o formato Data(date), e factor
 data = as.Date(coletasDATA)
 coletasCIDADE=as.factor(coletasCIDADE)
-
 #Adicionando os nomes das colunas dos Inteiros
 colnames(coletasINT) <- names(bancoFesf_sus[[1]])[1:32]
 
@@ -91,3 +90,4 @@ calc_soma_inidcadores = function(coletasFESF){
   soma
 }
 soma = calc_soma_inidcadores(coletasFESF) 
+

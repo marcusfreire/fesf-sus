@@ -1,6 +1,6 @@
 function(input, output, session) {
   
-  source('lendo_banco.R')
+  #source('lendo_banco.R')
   
   busca = data.frame(Data = coletasFESF$Data,Cidade = coletasFESF$Cidade,Validar = coletasFESF$Validar, User = coletasFESF$User,Comentario = coletasFESF$Comentario)
   #Tabela para coleta dos dados

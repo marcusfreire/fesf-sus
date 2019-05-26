@@ -89,7 +89,7 @@ dashboardPage( skin = "green",
           dateRangeInput('dateRange',
               label = 'Nesse filtro poderá escolher a data inicial e final das coletas',
               format = 'dd-mm-yyyy',
-              start = "2017-12-01" , end = "2018-12-01",
+              start = datamin, end = datamax,
               language = 'pt-BR',
               separator = 'até'
             ),
