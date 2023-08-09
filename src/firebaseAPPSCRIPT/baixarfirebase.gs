@@ -11,7 +11,7 @@ function BaixarFireBase() {
   var sheet = ss.getSheets()[0];
   sheet.clear(); // Limpar Planilha
   var firebaseUrl = "https://fesf-sus.firebaseio.com/";
-  var secret = "RtNIpAUUdV0b1wXPVWmPwysekZi2Zv6uY8xv5rV5";
+  var secret = "SECRET_VALUE";
   var base = FirebaseApp.getDatabaseByUrl(firebaseUrl);
   
   var dados = base.getData();
